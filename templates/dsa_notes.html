@@ -16,7 +16,7 @@
 
                 {% for topic in topics %}
                     <div class=" col-md-4 filtr-item" data-category="1, 5" data-sort="Busy streets">
-                        <a href="{% url 'index' %}">
+                        <a href="{% url 'dsa_notes_details' pk=topic.pk %}">
                             <div class="ed-gal-effect slow-zoom horizontal">
                                 <div class="img-box"><img src="{% static topic.image %}" alt=" "/></div>
                                 <div class="ed-text-box">

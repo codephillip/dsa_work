@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from myapp.models import Topic
+from myapp.models import Topic, SubTopic
 
 
 def index(request):
@@ -18,5 +18,8 @@ def about(request):
     return render(request, 'about.html')
 
 
-def dsa_notes_details(request):
-    return render(request, 'dsa_notes_details.html')
+def dsa_notes_details(request, pk):
+    sub_topics = SubTopic.objects.filter(pk=pk)
+    return render(request, 'dsa_notes_details.html', {
+        'sub_topics': sub_topics
+    })

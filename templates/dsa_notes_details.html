@@ -9,8 +9,12 @@
                 <p> There are many variations of passages of Lorem Ipsum available, but the majority have suffered
                     alteration in some form, by injected humour.</p>
             </div>
+            {% for sub_topic in sub_topics %}
+                <span>{{ sub_topic.name }}</span>
+            {% endfor %}
             <div class="about-grids">
                 <div class="col-md-5 about-grid1">
+
 
                     <h3>Nullam velit metus</h3>
                     <div class="about-img">
