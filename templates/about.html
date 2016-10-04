@@ -1,0 +1,83 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="about">
+        <div class="container">
+            <div class="about-head">
+                <h2>About</h2>
+                <p> There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                    alteration in some form, by injected humour.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
+                    neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Proin eget tortor risus. Mauris
+                    blandit
+                    aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit.
+                    Praesent
+                    sapien massa, convallis a pellentesque nec, egestas non nisi. Mauris blandit aliquet elit, eget
+                    tincidunt nibh pulvinar a. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam
+                    vehicula elementum sed sit amet dui. Donec sollicitudin molestie malesuada.</p>
+            </div>
+        </div>
+    </div>
+    <div class="test">
+        <div class="container">
+            <h3>Group Members</h3>
+            <div class=" test-grid-1">
+                <div class="col-md-6 test-wrapper">
+                    <img src="{% static 'images/te.jpg' %}" alt="" class="img-responsive">
+                    <div class="test-grid">
+                        <div class="test-gr">
+                            <h4>Andery</h4>
+                            <span>Ceo</span>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-md-6 test-wrapper">
+                    <img src="{% static 'images/te1.jpg' %}" alt="" class="img-responsive">
+                    <div class="test-grid">
+                        <div class="test-gr">
+                            <h4>Hailey</h4>
+                            <span> Principal</span>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class=" test-grid-2">
+                <div class="col-md-6 test-wrapper">
+                    <img src="{% static 'images/te2.jpg' %}" alt="" class="img-responsive">
+                    <div class="test-grid">
+                        <div class="test-gr">
+                            <h4>Quincy</h4>
+                            <span>Manager</span>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-md-6 test-wrapper">
+                    <img src="{% static 'images/te3.jpg' %}" alt="" class="img-responsive">
+                    <div class="test-grid">
+                        <div class="test-gr">
+                            <h4>Barb</h4>
+                            <span>professor</span>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
