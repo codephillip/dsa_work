@@ -19,7 +19,9 @@ def about(request):
 
 
 def dsa_notes_details(request, pk):
-    sub_topics = SubTopic.objects.filter(topic=Topic.objects.get(pk=pk))
+    topic = Topic.objects.get(pk=pk)
+    sub_topics = SubTopic.objects.filter(topic=topic)
     return render(request, 'dsa_notes_details.html', {
-        'sub_topics': sub_topics
+        'sub_topics': sub_topics,
+        'topic': topic,
     })
