@@ -1,12 +1,17 @@
 from django.shortcuts import render
 
+from myapp.models import Topic
+
 
 def index(request):
     return render(request, 'index.html')
 
 
 def dsa_notes(request):
-    return render(request, 'dsa_notes.html')
+    topics = Topic.objects.all()
+    return render(request, 'dsa_notes.html', {
+        'topics': topics
+    })
 
 
 def about(request):
