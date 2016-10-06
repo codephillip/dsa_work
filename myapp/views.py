@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from myapp.models import Topic, SubTopic
+from myapp.models import Topic, SubTopic, Member
 
 
 def index(request):
@@ -15,7 +15,10 @@ def dsa_notes(request):
 
 
 def about(request):
-    return render(request, 'about.html')
+    members = Member.objects.all()
+    return render(request, 'about.html', {
+        'members': members
+    })
 
 
 def dsa_notes_details(request, pk):

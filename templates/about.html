@@ -6,69 +6,35 @@
         <div class="container">
             <div class="about-head">
                 <h2>About</h2>
-                <p> This DSA assignment has given us an opportunity to express our DSA knowledge. Below are the group members who tirelessly worked hard to make it a reality</p>
+                <p> This DSA assignment has given us an opportunity to express our DSA knowledge. Below are the group
+                    members who tirelessly worked hard to make it a reality</p>
             </div>
         </div>
     </div>
     <div class="test">
         <div class="container">
             <h3>Group Members</h3>
-            <div class=" test-grid-1">
-                <div class="col-md-6 test-wrapper">
-                    <img src="{% static 'images/te.jpg' %}" alt="" class="img-responsive">
-                    <div class="test-grid">
-                        <div class="test-gr">
-                            <h4>Andery</h4>
-                            <span>Ceo</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="col-md-6 test-wrapper">
-                    <img src="{% static 'images/te1.jpg' %}" alt="" class="img-responsive">
-                    <div class="test-grid">
-                        <div class="test-gr">
-                            <h4>Hailey</h4>
-                            <span> Principal</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
 
-                <div class="clearfix"></div>
-            </div>
-            <div class=" test-grid-2">
-                <div class="col-md-6 test-wrapper">
-                    <img src="{% static 'images/te2.jpg' %}" alt="" class="img-responsive">
-                    <div class="test-grid">
-                        <div class="test-gr">
-                            <h4>Quincy</h4>
-                            <span>Manager</span>
+            {% for member in members %}
+                <div class=" test-grid-1">
+                    <div class="col-md-6 test-wrapper">
+                        <img src="{% static 'images/avatar5.png' %}" alt="" class="img-responsive">
+                        <div class="test-grid">
+                            <div class="test-gr">
+                                <h4>{{ member.name }}</h4>
+                                <br>
+                            </div>
+                            <p>{{ member.reg_num }}</p>
+                            <p>{{ member.student_num }}</p>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
+                        <div class="clearfix"></div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="col-md-6 test-wrapper">
-                    <img src="{% static 'images/te3.jpg' %}" alt="" class="img-responsive">
-                    <div class="test-grid">
-                        <div class="test-gr">
-                            <h4>Barb</h4>
-                            <span>professor</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+                <br>
+                <br>
 
-                <div class="clearfix"></div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
