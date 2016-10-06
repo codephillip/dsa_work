@@ -2265,3 +2265,11 @@ div#bs-example-navbar-collapse-1 {
 .background-text {
     background-color: #afd9ee;
 }
+
+.dsa-margin {
+    margin-left: 350px;
+}
+
+.dsa-margin2 {
+    margin-left: 20px;
+}
