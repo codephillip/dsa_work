@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^notes_details/(?P<pk>[-\w]+)/', views.dsa_notes_details, name='dsa_notes_details'),
     url(r'^about/', views.about, name='about'),
     url(r'^sorting/(?P<pk>[-\w]+)/', views.sorting, name='sorting'),
+    url(r'^single_sort/(?P<pk>[-\w]+)/', views.single_sort, name='single_sort'),
 ]

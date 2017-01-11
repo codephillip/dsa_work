@@ -36,3 +36,10 @@ def sorting(request, pk):
     return render(request, 'sorting.html', {
         'sub_topics': sub_topics,
     })
+
+
+def single_sort(request, pk):
+    sub_topic = SubTopic.objects.get(pk=pk)
+    return render(request, 'single_sort.html', {
+        'sub_topic': sub_topic,
+    })
