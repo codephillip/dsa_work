@@ -15,6 +15,10 @@
                     <div class="col-md-7 about-grid">
                         <h3>{{ sub_topic.name }}</h3>
                         <h5>{{ sub_topic.description }}</h5>
+                        {% for time in timelist %}
+                            <p>{{ time }}</p>
+                        {% endfor %}
+
                     </div>
                     <div class="clearfix"></div>
                 </div>
