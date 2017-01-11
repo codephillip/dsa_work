@@ -73,26 +73,26 @@ def bubble_sort(alist):
 def insertion_sort(alist):
     for index in range(1, len(alist)):
 
-        currentvalue = alist[index]
+        current_value = alist[index]
         position = index
 
-        while position > 0 and alist[position - 1] > currentvalue:
+        while position > 0 and alist[position - 1] > current_value:
             alist[position] = alist[position - 1]
             position -= 1
 
-        alist[position] = currentvalue
+        alist[position] = current_value
 
 
 def selection_sort(alist):
-    for fillslot in range(len(alist) - 1, 0, -1):
-        positionOfMax = 0
-        for location in range(1, fillslot + 1):
-            if alist[location] > alist[positionOfMax]:
-                positionOfMax = location
+    for fill_slot in range(len(alist) - 1, 0, -1):
+        position_of_max = 0
+        for location in range(1, fill_slot + 1):
+            if alist[location] > alist[position_of_max]:
+                position_of_max = location
 
-        temp = alist[fillslot]
-        alist[fillslot] = alist[positionOfMax]
-        alist[positionOfMax] = temp
+        temp = alist[fill_slot]
+        alist[fill_slot] = alist[position_of_max]
+        alist[position_of_max] = temp
 
 
 def merge_sort(alist):
@@ -111,21 +111,21 @@ def merge_sort(alist):
         while i < len(lefthalf) and j < len(righthalf):
             if lefthalf[i] < righthalf[j]:
                 alist[k] = lefthalf[i]
-                i = i + 1
+                i += 1
             else:
                 alist[k] = righthalf[j]
-                j = j + 1
-            k = k + 1
+                j += 1
+            k += 1
 
         while i < len(lefthalf):
             alist[k] = lefthalf[i]
-            i = i + 1
-            k = k + 1
+            i += 1
+            k += 1
 
         while j < len(righthalf):
             alist[k] = righthalf[j]
-            j = j + 1
-            k = k + 1
+            j += 1
+            k += 1
     print("Merging ", alist)
 
 
@@ -151,10 +151,10 @@ def partition(alist, first, last):
     while not done:
 
         while leftmark <= rightmark and alist[leftmark] <= pivotvalue:
-            leftmark = leftmark + 1
+            leftmark += 1
 
         while alist[rightmark] >= pivotvalue and rightmark >= leftmark:
-            rightmark = rightmark - 1
+            rightmark -= 1
 
         if rightmark < leftmark:
             done = True
