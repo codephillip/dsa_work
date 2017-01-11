@@ -28,3 +28,11 @@ def dsa_notes_details(request, pk):
         'sub_topics': sub_topics,
         'topic': topic,
     })
+
+
+def sorting(request, pk):
+    topic = Topic.objects.get(pk=pk)
+    sub_topics = SubTopic.objects.filter(topic=topic)
+    return render(request, 'sorting.html', {
+        'sub_topics': sub_topics,
+    })

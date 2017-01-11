@@ -14,15 +14,14 @@
             </div>
             <div class="filtr-container">
 
-                {% for topic in topics %}
+                {% for topic in sub_topics %}
                     <div class=" col-md-4 filtr-item" data-category="1, 5" data-sort="Busy streets">
-                        <a href="{% url 'sorting' pk=topic.pk %}">
+                        <a href="{% url 'dsa_notes_details' pk=topic.pk %}">
                             <div class="ed-gal-effect slow-zoom horizontal">
                                 <div class="img-box"><img src="{% static topic.image %}" alt=" "/></div>
                                 <div class="ed-text-box">
                                     <div class="ed-gal-text">
                                         <h4>{{ topic.name }}</h4>
-                                        <p>{{ topic.description }}</p>
                                     </div>
                                 </div>
                             </div>
