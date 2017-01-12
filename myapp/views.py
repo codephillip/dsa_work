@@ -5,9 +5,6 @@ import uuid
 from myapp.models import Topic, SubTopic, Member, Student, Receipt
 
 
-# mylist = [88298, 50207, 33162, 96619, 26507, 55409, 29664, 58815, 43325, 58561]
-
-
 def index(request):
     students = Student.objects.all()
     receipts_list = []
@@ -31,7 +28,7 @@ def insert_students_and_receipts():
 
 
 def sorting(request):
-    # insert_students_and_receipts()
+    insert_students_and_receipts()
     students = Student.objects.all()
     receipts_list = []
     for x in range(students.count()):
@@ -61,16 +58,6 @@ def dsa_notes_details(request, pk):
 def single_sort(request, pk):
     timelist = []
     sub_topic = SubTopic.objects.get(pk=pk)
-    # t = timeit.Timer(lambda: bubble_sort(mylist))
-    # timelist.append(t.timeit(number=1))
-    # t = timeit.Timer(lambda: insertion_sort(mylist))
-    # timelist.append(t.timeit(number=1))
-    # t = timeit.Timer(lambda: selection_sort(mylist))
-    # timelist.append(t.timeit(number=1))
-    # t = timeit.Timer(lambda: merge_sort(mylist))
-    # timelist.append(t.timeit(number=1))
-    # t = timeit.Timer(lambda: quick_sort(mylist))
-    # timelist.append(t.timeit(number=1))
 
     return render(request, 'single_sort.html', {
         'sub_topic': sub_topic,
@@ -188,15 +175,14 @@ def partition(alist, first, last):
 
 def sorted_receipt(request, pk):
     # 1 for select_all, 2 for select 10
-    timelist = []
-    # select_all()
     if int(pk) == 1:
         print("value" + pk)
-        timelist = select_all()
+        students = Student.objects.all()
+        timelist = select_all(students)
     else:
         print("value" + pk)
-        select_ten()
-    students = Student.objects.all()
+        students = Student.objects.all()[:10]
+        timelist = select_ten(students)
     receipts_list = []
     for x in range(students.count()):
         receipts_list.append(', '.join(map(str, Receipt.objects.filter(student_id=students[x].id))))
@@ -211,27 +197,66 @@ def sorted_receipt(request, pk):
     })
 
 
-def select_all():
+def select_all(student):
     print("started")
-    timelist = []
-    mylist = Receipt.objects.all()
-    receipt_list = []
-    for x in mylist:
-        receipt_list.append(x.number)
-    print("receipt_select")
-    print(mylist)
-    t = timeit.Timer(lambda: bubble_sort(receipt_list))
-    timelist.append(t.timeit(number=1))
-    t = timeit.Timer(lambda: insertion_sort(receipt_list))
-    timelist.append(t.timeit(number=1))
-    t = timeit.Timer(lambda: selection_sort(receipt_list))
-    timelist.append(t.timeit(number=1))
-    t = timeit.Timer(lambda: merge_sort(receipt_list))
-    timelist.append(t.timeit(number=1))
-    t = timeit.Timer(lambda: quick_sort(receipt_list))
-    timelist.append(t.timeit(number=1))
+    bubble_sort_time = 0
+    insertion_sort_time = 0
+    selection_sort_time = 0
+    merge_sort_time = 0
+    quick_sort_time = 0
+    count = 0
+    for x in student:
+        count += 1
+        mylist = Receipt.objects.filter(student_id=x.id)
+        receipt_list = []
+        for x in mylist:
+            receipt_list.append(x.number)
+        print("receipt_select")
+        print(mylist)
+        t = timeit.Timer(lambda: bubble_sort(receipt_list))
+        bubble_sort_time += t.timeit(number=1)
+        t = timeit.Timer(lambda: insertion_sort(receipt_list))
+        insertion_sort_time += t.timeit(number=1)
+        t = timeit.Timer(lambda: selection_sort(receipt_list))
+        selection_sort_time += t.timeit(number=1)
+        t = timeit.Timer(lambda: merge_sort(receipt_list))
+        merge_sort_time += t.timeit(number=1)
+        t = timeit.Timer(lambda: quick_sort(receipt_list))
+        quick_sort_time += t.timeit(number=1)
+        print("insertion_sort# " + str(insertion_sort_time))
+        print("count#" + str(count))
+    timelist = [bubble_sort_time, insertion_sort_time, selection_sort_time, merge_sort_time, quick_sort_time]
     return timelist
 
 
-def select_ten():
-    pass
+def select_ten(student):
+    print("started")
+    print("count student# " + str(student.count()))
+    bubble_sort_time = 0
+    insertion_sort_time = 0
+    selection_sort_time = 0
+    merge_sort_time = 0
+    quick_sort_time = 0
+    count = 0
+    for x in student:
+        count += 1
+        mylist = Receipt.objects.filter(student_id=x.id)
+        receipt_list = []
+        for x in mylist:
+            receipt_list.append(x.number)
+        print("receipt_select")
+        print(mylist)
+        t = timeit.Timer(lambda: bubble_sort(receipt_list))
+        bubble_sort_time += t.timeit(number=1)
+        t = timeit.Timer(lambda: insertion_sort(receipt_list))
+        insertion_sort_time += t.timeit(number=1)
+        t = timeit.Timer(lambda: selection_sort(receipt_list))
+        selection_sort_time += t.timeit(number=1)
+        t = timeit.Timer(lambda: merge_sort(receipt_list))
+        merge_sort_time += t.timeit(number=1)
+        t = timeit.Timer(lambda: quick_sort(receipt_list))
+        quick_sort_time += t.timeit(number=1)
+        print("insertion_sort# " + str(insertion_sort_time))
+        print("count#" + str(count))
+    timelist = [bubble_sort_time, insertion_sort_time, selection_sort_time, merge_sort_time, quick_sort_time]
+    return timelist
