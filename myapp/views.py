@@ -11,12 +11,12 @@ def index(request):
     students = Student.objects.all()
     receipts_list = []
     for x in range(students.count()):
-        receipts_list.append(Receipt.objects.filter(student_id=students[x].id))
+        receipts_list.append(','.join(map(str, Receipt.objects.filter(student_id=students[x].id))))
     print("receipts#")
     print(receipts_list)
+    data = zip(students, receipts_list)
     return render(request, 'index.html', {
-        'students': students,
-        'receipts_list': receipts_list
+        'data': data,
     })
 
 
