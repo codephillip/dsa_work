@@ -183,3 +183,21 @@ def partition(alist, first, last):
     alist[first] = alist[rightmark]
     alist[rightmark] = temp
     return rightmark
+
+
+def sorted_receipt(request, pk):
+    # 1 for select_all, 2 for select 10
+    if pk == 1:
+        print("value" + pk)
+    else:
+        print("value" + pk)
+    students = Student.objects.all()
+    receipts_list = []
+    for x in range(students.count()):
+        receipts_list.append(', '.join(map(str, Receipt.objects.filter(student_id=students[x].id))))
+    print("receipts#")
+    print(receipts_list)
+    data = zip(students, receipts_list)
+    return render(request, 'sorted.html', {
+        'data': data,
+    })

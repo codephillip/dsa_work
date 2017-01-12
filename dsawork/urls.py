@@ -8,5 +8,5 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^about/', views.about, name='about'),
     url(r'^sorting/', views.sorting, name='sorting'),
-    url(r'^single_sort/(?P<pk>[-\w]+)/', views.single_sort, name='single_sort'),
+    url(r'^sorted_receipt/(?P<pk>[-\w]+)/', views.sorted_receipt, name='sorted_receipt'),
 ]
