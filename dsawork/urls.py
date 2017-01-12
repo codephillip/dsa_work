@@ -6,9 +6,7 @@ from myapp import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
-    url(r'^notes/', views.dsa_notes, name='dsa_notes'),
-    url(r'^notes_details/(?P<pk>[-\w]+)/', views.dsa_notes_details, name='dsa_notes_details'),
     url(r'^about/', views.about, name='about'),
-    url(r'^sorting/(?P<pk>[-\w]+)/', views.sorting, name='sorting'),
+    url(r'^sorting/', views.sorting, name='sorting'),
     url(r'^single_sort/(?P<pk>[-\w]+)/', views.single_sort, name='single_sort'),
 ]

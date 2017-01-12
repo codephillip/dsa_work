@@ -10,25 +10,26 @@
     <div class="gallery">
         <div class="container">
             <div class="gallery-top">
-                <h2>Categories</h2>
+                <h2>Sorting</h2>
             </div>
-            <div class="filtr-container">
-
-                {% for topic in sub_topics %}
-                    <div class=" col-md-4 filtr-item" data-category="1, 5" data-sort="Busy streets">
-                        <a href="{% url 'single_sort' pk=topic.pk %}">
-                            <div class="ed-gal-effect slow-zoom horizontal">
-                                <div class="img-box"><img src="{% static topic.image %}" alt=" "/></div>
-                                <div class="ed-text-box">
-                                    <div class="ed-gal-text">
-                                        <h4>{{ topic.name }}</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                {% endfor %}
-                <div class="clearfix"></div>
+            <div class="container">
+                <h2>Student Records</h2>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Student Number</th>
+                        <th>Receipts</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in data %}
+                        <tr>
+                            <td>{{ item.0 }}</td>
+                            <td>{{ item.1 }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
