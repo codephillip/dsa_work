@@ -4,7 +4,8 @@ import uuid
 
 from myapp.models import Topic, SubTopic, Member, Student, Receipt
 
-mylist = [88298, 50207, 33162, 96619, 26507, 55409, 29664, 58815, 43325, 58561]
+
+# mylist = [88298, 50207, 33162, 96619, 26507, 55409, 29664, 58815, 43325, 58561]
 
 
 def index(request):
@@ -60,16 +61,16 @@ def dsa_notes_details(request, pk):
 def single_sort(request, pk):
     timelist = []
     sub_topic = SubTopic.objects.get(pk=pk)
-    t = timeit.Timer(lambda: bubble_sort(mylist))
-    timelist.append(t.timeit(number=1))
-    t = timeit.Timer(lambda: insertion_sort(mylist))
-    timelist.append(t.timeit(number=1))
-    t = timeit.Timer(lambda: selection_sort(mylist))
-    timelist.append(t.timeit(number=1))
-    t = timeit.Timer(lambda: merge_sort(mylist))
-    timelist.append(t.timeit(number=1))
-    t = timeit.Timer(lambda: quick_sort(mylist))
-    timelist.append(t.timeit(number=1))
+    # t = timeit.Timer(lambda: bubble_sort(mylist))
+    # timelist.append(t.timeit(number=1))
+    # t = timeit.Timer(lambda: insertion_sort(mylist))
+    # timelist.append(t.timeit(number=1))
+    # t = timeit.Timer(lambda: selection_sort(mylist))
+    # timelist.append(t.timeit(number=1))
+    # t = timeit.Timer(lambda: merge_sort(mylist))
+    # timelist.append(t.timeit(number=1))
+    # t = timeit.Timer(lambda: quick_sort(mylist))
+    # timelist.append(t.timeit(number=1))
 
     return render(request, 'single_sort.html', {
         'sub_topic': sub_topic,
@@ -187,17 +188,50 @@ def partition(alist, first, last):
 
 def sorted_receipt(request, pk):
     # 1 for select_all, 2 for select 10
-    if pk == 1:
+    timelist = []
+    # select_all()
+    if int(pk) == 1:
         print("value" + pk)
+        timelist = select_all()
     else:
         print("value" + pk)
+        select_ten()
     students = Student.objects.all()
     receipts_list = []
     for x in range(students.count()):
         receipts_list.append(', '.join(map(str, Receipt.objects.filter(student_id=students[x].id))))
-    print("receipts#")
-    print(receipts_list)
+    title = ['bubble sort', 'insertion sort', 'selection sort', 'merge sort', 'quick sort']
     data = zip(students, receipts_list)
+    graph_data = zip(title, timelist)
     return render(request, 'sorted.html', {
         'data': data,
+        'timelist': timelist,
+        'title': title,
+        'graph_data': graph_data
     })
+
+
+def select_all():
+    print("started")
+    timelist = []
+    mylist = Receipt.objects.all()
+    receipt_list = []
+    for x in mylist:
+        receipt_list.append(x.number)
+    print("receipt_select")
+    print(mylist)
+    t = timeit.Timer(lambda: bubble_sort(receipt_list))
+    timelist.append(t.timeit(number=1))
+    t = timeit.Timer(lambda: insertion_sort(receipt_list))
+    timelist.append(t.timeit(number=1))
+    t = timeit.Timer(lambda: selection_sort(receipt_list))
+    timelist.append(t.timeit(number=1))
+    t = timeit.Timer(lambda: merge_sort(receipt_list))
+    timelist.append(t.timeit(number=1))
+    t = timeit.Timer(lambda: quick_sort(receipt_list))
+    timelist.append(t.timeit(number=1))
+    return timelist
+
+
+def select_ten():
+    pass
