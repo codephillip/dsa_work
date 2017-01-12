@@ -29,6 +29,16 @@
                         </a>
                     </div>
                 {% endfor %}
+            {% for student in students %}
+                <p>{{ student.name }}</p>
+            {% endfor %}
+             {% for rptlist in receipts_list %}
+                 <h1>Header</h1>
+                 {% for receipt in rptlist %}
+                 <p>{{ receipt }}</p>
+                 {% endfor %}
+            {% endfor %}
+
                 <div class="clearfix"></div>
             </div>
         </div>

@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Topic(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=400)
     image = models.CharField(max_length=200)
     description = models.TextField()
 
@@ -30,3 +30,18 @@ class Member(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class Student(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Receipt(models.Model):
+    number = models.IntegerField()
+    student = models.ForeignKey(Student)
+
+    def __unicode__(self):
+        return str(self.number)

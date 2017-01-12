@@ -13,27 +13,34 @@
                     new data item, searching for a particular item, or sorting the items. You can think of an
                     algorithm as a recipe: a list of detailed instructions for carrying out an activity.</p>
             </div>
-            <div class="servies-top dsa-margin">
-                <div class="col-md-7 us-ser">
+            <div class="servies-top dsa-margin" style="margin-left: -16px">
+                <div class="us-ser">
+
                     <div class=" why-choose">
-                        <div class=" hi-icon-effect-2 hi-icon-effect-2a">
-                            <a href="#set-6" class="hi-icon  glyphicon glyphicon-book"></a>
+                        <div class="container">
+                            <h2>Student Records</h2>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Student Number</th>
+                                    <th>Receipts</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for student in students %}
+                                    <tr>
+                                        <td>{{ student.name }}</td>
+                                        {% for rptlist in receipts_list %}
+                                            {% for receipt in rptlist %}
+                                                <td>{{ receipt }}</td>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="ser-top dsa-margin2">
-                            <h5>Data Structures</h5>
-                            <p>The Arrangement of data in memory</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class=" why-choose">
-                        <div class=" hi-icon-effect-2 hi-icon-effect-2a">
-                            <a href="#set-6" class="hi-icon  glyphicon glyphicon-leaf"></a>
-                        </div>
-                        <div class="ser-top dsa-margin2">
-                            <h5>Algorithms</h5>
-                            <p>A step by step process of how to solve a problem</p>
-                        </div>
-                        <div class="clearfix"></div>
                     </div>
                 </div>
                 <div class="clearfix"></div>

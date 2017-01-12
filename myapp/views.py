@@ -1,19 +1,47 @@
 from django.shortcuts import render
 import timeit
+import uuid
 
-from myapp.models import Topic, SubTopic, Member
+from myapp.models import Topic, SubTopic, Member, Student, Receipt
 
 mylist = [88298, 50207, 33162, 96619, 26507, 55409, 29664, 58815, 43325, 58561]
 
 
 def index(request):
-    return render(request, 'index.html')
+    students = Student.objects.all()
+    receipts_list = []
+    for x in range(students.count()):
+        receipts_list.append(Receipt.objects.filter(student_id=students[x].id))
+    print("receipts#")
+    print(receipts_list)
+    return render(request, 'index.html', {
+        'students': students,
+        'receipts_list': receipts_list
+    })
+
+
+def insert_students_and_receipts():
+    for x in range(5):
+        student = Student(name=str(uuid.uuid4().time)[0:8])
+        student.save()
+        for x in range(5):
+            print(student)
+            Receipt(student=student, number=str(uuid.uuid4().time)[0:5]).save()
 
 
 def dsa_notes(request):
     topics = Topic.objects.all()
+    # insert_students_and_receipts()
+    students = Student.objects.all()
+    receipts_list = []
+    for x in range(students.count()):
+        receipts_list.append(Receipt.objects.filter(student_id=students[x].id))
+    print("receipts#")
+    print(receipts_list)
     return render(request, 'dsa_notes.html', {
-        'topics': topics
+        'topics': topics,
+        'students': students,
+        'receipts_list': receipts_list
     })
 
 
