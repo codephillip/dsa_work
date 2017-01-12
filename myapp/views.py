@@ -272,16 +272,28 @@ def binary_search(alist, item):
     first = 0
     last = len(alist) - 1
     found = False
+    item = int(item)
+    print(type(item))
 
     while first <= last and not found:
         midpoint = (first + last) // 2
         if alist[midpoint] == item:
+            print("IF")
             found = True
         else:
+            print("ELSE")
+            print(alist[midpoint])
+            print(item)
+            print(type(alist[midpoint]))
+            print(type(item))
+
             if item < alist[midpoint]:
                 last = midpoint - 1
+                print("LAST")
+
             else:
                 first = midpoint + 1
+                print("FIRST")
 
     return found
 
@@ -313,11 +325,11 @@ def searching(request, item):
     l_time = stop - start
     print(found)
 
-    # start = time.time()
-    # found = binary_search(receipt_list, item)
-    # stop = time.time()
-    # b_time = stop - start
-    timelist = [l_time, 9]
+    start = time.time()
+    found = binary_search(receipt_list, item)
+    stop = time.time()
+    b_time = stop - start
+    timelist = [l_time, b_time]
     print(found)
 
     graph_data = zip(['Linear Search', 'Binary Search'], timelist)

@@ -24,13 +24,6 @@
                 <h2>Searching</h2>
             </div>
             <div class="container">
-                <h2 style="margin-bottom: 30px">Student Records</h2>
-                <a href="{% url 'sorted_receipt' pk=1 %}">
-                    <button type="button" class="btn btn-primary button-padding">Select All</button>
-                </a>
-                <a href="{% url 'sorted_receipt' pk=2 %}">
-                    <button type="button" class="btn btn-primary button-padding">Select 10</button>
-                </a>
 
                 <div style="margin-top: 20px; margin-bottom: 20px">
                     {% for gdata in graph_data %}
@@ -39,24 +32,6 @@
                 </div>
 
                 <p>{{ found }}</p>
-
-
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Student Number</th>
-                        <th>Receipts</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for item in data %}
-                        <tr>
-                            <td>{{ item.0 }}</td>
-                            <td>{{ item.1 }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
