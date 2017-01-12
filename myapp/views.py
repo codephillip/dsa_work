@@ -24,19 +24,17 @@ def insert_students_and_receipts():
     for x in range(5):
         student = Student(name=str(uuid.uuid4().time)[0:8])
         student.save()
-        for x in range(5):
+        for x in range(10):
             print(student)
             Receipt(student=student, number=str(uuid.uuid4().time)[0:5]).save()
 
 
 def sorting(request):
-    insert_students_and_receipts()
+    # insert_students_and_receipts()
     students = Student.objects.all()
     receipts_list = []
     for x in range(students.count()):
         receipts_list.append(', '.join(map(str, Receipt.objects.filter(student_id=students[x].id))))
-    print("receipts#")
-    print(receipts_list)
     data = zip(students, receipts_list)
     return render(request, 'sorting.html', {
         'data': data,

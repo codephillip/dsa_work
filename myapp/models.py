@@ -41,7 +41,15 @@ class Student(models.Model):
 
 class Receipt(models.Model):
     number = models.IntegerField()
-    student = models.ForeignKey(Student)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+
+    def __unicode__(self):
+        return str(self.number)
+
+
+class SortedReceipt(models.Model):
+    number = models.IntegerField()
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
 
     def __unicode__(self):
         return str(self.number)
