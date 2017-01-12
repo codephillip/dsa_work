@@ -1,3 +1,4 @@
+import time
 from django.shortcuts import render
 import timeit
 import uuid
@@ -13,6 +14,10 @@ def index(request):
     print("receipts#")
     print(receipts_list)
     data = zip(students, receipts_list)
+    # testing binary search
+    testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42, ]
+    print(linear_search(testlist, 3))
+    print(linear_search(testlist, 13))
     return render(request, 'index.html', {
         'data': data,
     })
@@ -261,3 +266,63 @@ def select_ten(student):
         print("insertion_sort# " + str(insertion_sort_time))
     timelist = [bubble_sort_time, insertion_sort_time, selection_sort_time, merge_sort_time, quick_sort_time]
     return timelist
+
+
+def binary_search(alist, item):
+    first = 0
+    last = len(alist) - 1
+    found = False
+
+    while first <= last and not found:
+        midpoint = (first + last) // 2
+        if alist[midpoint] == item:
+            found = True
+        else:
+            if item < alist[midpoint]:
+                last = midpoint - 1
+            else:
+                first = midpoint + 1
+
+    return found
+
+
+def linear_search(receipts, item):
+    print("started linear search")
+    for x in receipts:
+        print("seaching#" + str(x))
+        if str(x) == str(item):
+            print("found item")
+            return True
+    return False
+
+
+def searching(request, item):
+    receipts = Receipt.objects.all()
+    found = False
+
+    receipt_list = []
+    for x in receipts:
+        receipt_list.append(x.number)
+
+    print("receipt#")
+    print(receipt_list)
+
+    start = time.time()
+    found = linear_search(receipt_list, item)
+    stop = time.time()
+    l_time = stop - start
+    print(found)
+
+    # start = time.time()
+    # found = binary_search(receipt_list, item)
+    # stop = time.time()
+    # b_time = stop - start
+    timelist = [l_time, 9]
+    print(found)
+
+    graph_data = zip(['Linear Search', 'Binary Search'], timelist)
+
+    return render(request, 'searched.html', {
+        'found': found,
+        'graph_data': graph_data
+    })

@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^about/', views.about, name='about'),
     url(r'^sorting/', views.sorting, name='sorting'),
     url(r'^sorted_receipt/(?P<pk>[-\w]+)/', views.sorted_receipt, name='sorted_receipt'),
+    url(r'^searching/(?P<item>[-\w]+)/', views.searching, name='searching'),
 ]

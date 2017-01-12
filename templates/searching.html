@@ -7,13 +7,9 @@
         .button-padding {
             padding-left: 40px;
             padding-right: 40px;
-            margin-bottom: 10px;
-            margin-right: 10px
+            margin-bottom: 10px; margin-right: 10px
         }
     </style>
-
-    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
     <link href="{% static 'css/index.css' %}" rel="stylesheet" type="text/css" media="all"/>
 {% endblock %}
 
@@ -21,24 +17,12 @@
     <div class="gallery">
         <div class="container">
             <div class="gallery-top">
-                <h2>Sorting2</h2>
+                <h2>Searching</h2>
             </div>
             <div class="container">
                 <h2 style="margin-bottom: 30px">Student Records</h2>
-                <a href="{% url 'sorted_receipt' pk=1 %}">
-                    <button type="button" class="btn btn-primary button-padding">Select All</button>
-                </a>
-                <a href="{% url 'sorted_receipt' pk=2 %}">
-                    <button type="button" class="btn btn-primary button-padding">Select 10</button>
-                </a>
-
-                <div style="margin-top: 20px; margin-bottom: 20px">
-                    {% for gdata in graph_data %}
-                        <p>{{ gdata.0 }} : {{ gdata.1 }}</p>
-                    {% endfor %}
-                </div>
-
-
+                <a href="{% url 'searching' pk=1 %}"><button type="button" class="btn btn-primary button-padding">Select All</button></a>
+                <a href="{% url 'searching' pk=2 %}"><button type="button" class="btn btn-primary button-padding">Select 10</button></a>
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -58,6 +42,4 @@
             </div>
         </div>
     </div>
-
-
 {% endblock %}
