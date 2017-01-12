@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from myapp.models import Topic, SubTopic, Member, Student, Receipt
+from myapp.models import Topic, SubTopic, Member, Student, Receipt, SortedReceipt
 
 
 class StudentAdmin(admin.ModelAdmin):
@@ -16,5 +16,6 @@ class ReceiptAdmin(admin.ModelAdmin):
 admin.site.register(Topic)
 admin.site.register(SubTopic)
 admin.site.register(Member)
+admin.site.register(SortedReceipt)
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Receipt, ReceiptAdmin)

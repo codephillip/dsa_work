@@ -2,7 +2,7 @@ from django.shortcuts import render
 import timeit
 import uuid
 
-from myapp.models import Topic, SubTopic, Member, Student, Receipt
+from myapp.models import Topic, SubTopic, Member, Student, Receipt, SortedReceipt
 
 
 def index(request):
@@ -185,10 +185,12 @@ def sorted_receipt(request, pk):
         timelist = select_ten(students)
     receipts_list = []
     for x in range(students.count()):
-        receipts_list.append(', '.join(map(str, Receipt.objects.filter(student_id=students[x].id))))
+        receipts_list.append(', '.join(map(str, SortedReceipt.objects.filter(student_id=students[x].id))))
     title = ['bubble sort', 'insertion sort', 'selection sort', 'merge sort', 'quick sort']
     data = zip(students, receipts_list)
     graph_data = zip(title, timelist)
+    print("sortedreceipt")
+    print(receipts_list)
     return render(request, 'sorted.html', {
         'data': data,
         'timelist': timelist,
@@ -204,10 +206,8 @@ def select_all(student):
     selection_sort_time = 0
     merge_sort_time = 0
     quick_sort_time = 0
-    count = 0
-    for x in student:
-        count += 1
-        mylist = Receipt.objects.filter(student_id=x.id)
+    for stn in student:
+        mylist = Receipt.objects.filter(student_id=stn.id)
         receipt_list = []
         for x in mylist:
             receipt_list.append(x.number)
@@ -215,6 +215,11 @@ def select_all(student):
         print(mylist)
         t = timeit.Timer(lambda: bubble_sort(receipt_list))
         bubble_sort_time += t.timeit(number=1)
+
+        # inserts sorted receipts
+        # for y in receipt_list:
+        #     SortedReceipt(number=y, student=stn).save()
+
         t = timeit.Timer(lambda: insertion_sort(receipt_list))
         insertion_sort_time += t.timeit(number=1)
         t = timeit.Timer(lambda: selection_sort(receipt_list))
@@ -224,7 +229,6 @@ def select_all(student):
         t = timeit.Timer(lambda: quick_sort(receipt_list))
         quick_sort_time += t.timeit(number=1)
         print("insertion_sort# " + str(insertion_sort_time))
-        print("count#" + str(count))
     timelist = [bubble_sort_time, insertion_sort_time, selection_sort_time, merge_sort_time, quick_sort_time]
     return timelist
 
@@ -237,9 +241,7 @@ def select_ten(student):
     selection_sort_time = 0
     merge_sort_time = 0
     quick_sort_time = 0
-    count = 0
     for x in student:
-        count += 1
         mylist = Receipt.objects.filter(student_id=x.id)
         receipt_list = []
         for x in mylist:
@@ -257,6 +259,5 @@ def select_ten(student):
         t = timeit.Timer(lambda: quick_sort(receipt_list))
         quick_sort_time += t.timeit(number=1)
         print("insertion_sort# " + str(insertion_sort_time))
-        print("count#" + str(count))
     timelist = [bubble_sort_time, insertion_sort_time, selection_sort_time, merge_sort_time, quick_sort_time]
     return timelist
