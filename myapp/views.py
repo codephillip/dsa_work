@@ -27,7 +27,7 @@ def insert_students_and_receipts():
     for x in range(5):
         student = Student(name=str(uuid.uuid4().time)[0:8])
         student.save()
-        for x in range(10):
+        for y in range(10):
             print(student)
             Receipt(student=student, number=str(uuid.uuid4().time)[0:5]).save()
 
@@ -221,9 +221,11 @@ def select_all(student):
         t = timeit.Timer(lambda: bubble_sort(receipt_list))
         bubble_sort_time += t.timeit(number=1)
 
+        # todo implement deletion of old data
+
         # inserts sorted receipts
-        # for y in receipt_list:
-        #     SortedReceipt(number=y, student=stn).save()
+        for y in receipt_list:
+            SortedReceipt(number=y, student=stn).save()
 
         t = timeit.Timer(lambda: insertion_sort(receipt_list))
         insertion_sort_time += t.timeit(number=1)
